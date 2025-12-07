@@ -1,21 +1,11 @@
-[tool.poetry]
+[project]
 name = "wallhavend"
-version = "0.2.0"
-description = "Automatically download and use wallpapers from wallhaven.cc"
-authors = ["Josh Burns <joshyburnss@gmail.com>"]
-license = "MIT"
+version = "0.3.0"
+description = "Add your description here"
 readme = "README.md"
-packages = [
-  { include = "wallhavend", from = "src" }
+requires-python = ">=3.12"
+dependencies = [
+  python = "^3.11",
+  requests = "^2.31.0",
+  rich = "^13.0.1"
 ]
-[tool.poetry.dependencies]
-python = "^3.11"
-requests = "^2.31.0"
-rich = "^13.0.1"
-
-[tool.poetry.scripts]
-wallhavend = { callable = "wallhavend.console:run" }
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
