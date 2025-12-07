@@ -10,7 +10,7 @@ from .wallhaven_api import make_payload, search_url_generator, process_image
 parser = argparse.ArgumentParser(
                     prog = 'wallhavend',
                     description = 'Grab and use wallpapers from wallhaven.cc',
-                    epilog = 'wallhavend - VERSION 0.1.0')
+                    epilog = 'wallhavend - VERSION 0.3.0')
 
 # Flags
 parser.add_argument('-k', '--key', metavar="KEY", help="Your wallhaven.cc API key")
