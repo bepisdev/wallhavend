@@ -13,7 +13,7 @@ def create_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog='wallhavend',
         description='Grab and use wallpapers from wallhaven.cc',
-        epilog='wallhavend - VERSION 0.3.0'
+        epilog='wallhavend - VERSION 0.3.1'
     )
     
     # Query and search options
