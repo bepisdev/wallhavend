@@ -1,13 +1,16 @@
 [project]
 name = "wallhavend"
 version = "0.3.0"
-description = "Add your description here"
+description = "A CLI tool for downloading wallpapers from wallhaven.cc"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "requests>=2.32.5",
     "rich>=14.2.0",
 ]
+
+[project.scripts]
+wallhavend = "wallhavend.cli:run"
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
