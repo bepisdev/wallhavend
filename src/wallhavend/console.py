@@ -5,6 +5,7 @@ import os
 from rich.progress import track
 from .fileio import dir_exists
 from .wallhaven_api import make_payload, search_url_generator, process_image
+from .config import load_config
 
 # Create parser 
 parser = argparse.ArgumentParser(
@@ -13,9 +14,8 @@ parser = argparse.ArgumentParser(
                     epilog = 'wallhavend - VERSION 0.3.0')
 
 # Flags
-parser.add_argument('-k', '--key', metavar="KEY", help="Your wallhaven.cc API key")
 parser.add_argument('-q', '--query', metavar="QUERY", help="Search term, or tag")
-parser.add_argument('-N', '--nsfw', action="store_true", help="Allow NSFW images to be returned in results")
+parser.add_argument('-N', '--nsfw', action="store_true", help="Override config to allow NSFW images in results")
 parser.add_argument('-p', '--pages', metavar="LIMIT", help="Set a limit on how many pages the API can return (24 images per page)")
 
 def run():
@@ -24,18 +24,20 @@ def run():
   is called from the commandline.
   """
   args = parser.parse_args()
+  
+  # Load configuration
+  config = load_config()
+  
   page_limit = args.pages
-  s_url = search_url_generator(apikey=args.key)
+  s_url = search_url_generator(apikey=config['api_key'])
   results_page = 1
-  nsfw_flag = "100"
+  
+  # NSFW filter - use config value, but allow CLI flag to override
+  nsfw_flag = "111" if (config['allow_nsfw'] or args.nsfw) else "100"
 
   # Check if output directory exists or not
   if not dir_exists("./out"):
     os.mkdir("./out")
-  
-  # NSFW filter
-  if args.nsfw is True:
-    nsfw_flag = "111"
 
   # Get metadata and set page_limit based on page count.
   initial_payload = make_payload(args.query,nsfw_flag,results_page)

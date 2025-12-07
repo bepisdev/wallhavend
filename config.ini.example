@@ -1,0 +1,11 @@
+# wallhavend configuration file
+# This file is automatically created at ~/.config/wallhavend/config.ini
+
+[wallhaven]
+# Your wallhaven.cc API key (leave empty if you don't have one)
+# Get your API key from: https://wallhaven.cc/settings/account
+api_key = 
+
+# Allow NSFW content in search results (true/false)
+# Set to true to include NSFW images, false to filter them out
+allow_nsfw = false
