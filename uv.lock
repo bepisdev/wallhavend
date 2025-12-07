@@ -147,7 +147,7 @@ wheels = [
 [[package]]
 name = "wallhavend"
 version = "0.3.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "requests" },
     { name = "rich" },
