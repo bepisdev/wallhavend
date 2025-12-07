@@ -1,6 +1,14 @@
 # wallhavend
 
-Simple daemon to handle retrieve and use wallpapers from wallhaven.cc
+A modern CLI tool for downloading wallpapers from wallhaven.cc with a clean, modular architecture.
+
+## Features
+
+- 🎨 Search and download wallpapers from Wallhaven.cc
+- ⚙️ Configuration file support for persistent settings
+- 🔒 NSFW content filtering with config and CLI override options
+- 📦 Clean, modular codebase with separation of concerns
+- 🚀 Built with modern Python practices
 
 ## Configuration
 
@@ -31,13 +39,30 @@ wallhavend [OPTIONS]
 
 #### Options and Settings
 
-- `--query <QUERY>` or `-q` - Search term or tag.
-- `--pages <LIMIT>` or `-p` - How many pages to run over (API Results are paginated).
+- `--query <QUERY>` or `-q` - Search term or tag
+- `--pages <LIMIT>` or `-p` - Maximum number of pages to download (24 images per page)
+- `--output <DIR>` or `-o` - Output directory for downloaded images (default: ./out)
 
 #### Flags
 
-- `--nsfw` or `-N` - Override config to enable NSFW images in results for this run.
-- `--help` or `-h` - Display help message.
+- `--nsfw` or `-N` - Override config to enable NSFW images in results for this run
+- `--help` or `-h` - Display help message
+
+### Examples
+
+```shell
+# Search for nature wallpapers
+wallhavend -q "nature"
+
+# Download first 5 pages of anime wallpapers
+wallhavend -q "anime" -p 5
+
+# Enable NSFW for this search only
+wallhavend -q "art" -N
+
+# Specify custom output directory
+wallhavend -q "landscape" -o ~/Pictures/Wallpapers
+```
 
 ## Installation
 
